@@ -136,6 +136,8 @@ From #PercentPopulationVaccinated
 
 --Creating Views to Store Data for Later Visualizations
 
+-- Percent of Population Vaccinated
+	
 Create View PercentPopulationVaccinated as
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.location Order by dea.location, dea.date) as RollingVaccinationCount
